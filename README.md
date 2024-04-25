@@ -1,31 +1,35 @@
-# Plane-Ticket-Price-Prediction-with-Random-Forest-RSCV--91-
+# Plane Ticket Price Prediction With Random Forest Cross Validation: 91%
 
-## Projek Prediksi Harga Tiket Pesawat pada suatu situs 🤨 🧐 
+![pexels-yeochan-lee-834950780-19567707](https://github.com/roniantoniius/Plane-Ticket-Price-Prediction-with-Random-Forest/assets/121453378/35d3753a-c1b7-4436-a544-6477a562f5b3)
+
+Source: Pexels.com
+
+## Airplane Ticket Price Prediction Project on a site 🤨 🧐 
 #### 1. Business Understanding 😇 
-Disini saya ingin mencoba untuk memprediksi harga tiket pesawat di India 😆😆😆. Prediksi harga tiket pesawat menjadi krusial dalam industri penerbangan untuk membantu penumpang dan perusahaan penerbangan dalam perencanaan perjalanan dan strategi harga yang efektif 😱😱. Permasalahan yang ingin diselesaikan meliputi pemahaman terhadap faktor-faktor apa yang memengaruhi fluktuasi harga tiket pesawat, seperti musim perjalanan, maskapai penerbangan, rute penerbangan, dan waktu keberangkatan. Dengan membangun model prediksi yang akurat, kita dapat membantu penumpang mendapatkan perkiraan harga tiket yang lebih baik sebelum memesan, sementara perusahaan penerbangan dapat menggunakan informasi ini untuk mengoptimalkan strategi harga mereka. Proyek ini juga bertujuan untuk memberikan wawasan yang lebih baik kepada masyarakat tentang dinamika harga tiket pesawat dan menjelaskan konsep machine learning dalam konteks yang relevan dengan industri penerbangan. Maka dari itu salah satu solusi yang bisa saya buat yaitu model prediksi (kalau bisa sampai tahap deploy dengan azure/aws). Pada kernel ini sebagian besar saya akan menggunakan beberapa teknik dari regresi linear. Ayoo 🫡
+Here I want to try to predict airfares in India 😆😆😆. Airfare prediction is crucial in the airline industry to help passengers and airlines in effective travel planning and pricing strategies 😱😱. The problem to be solved includes understanding what factors affect airfare fluctuations, such as travel season, airline, flight route, and departure time. By building an accurate prediction model, we can help passengers get a better estimate of ticket prices before booking, while airlines can use this information to optimize their pricing strategies. This project also aims to give the public a better insight into the dynamics of airfare prices and explain the concept of machine learning in a context relevant to the aviation industry. Therefore, one of the solutions that I can create is a prediction model (if I can get to the deployment stage with azure/aws). In this kernel, I will mostly use some techniques from linear regression. Come on 🫡
 
 
 #### 2. Data Understanding 😁
-Dataset tiket pesawat tahun 2019 di India merupakan kumpulan data yang berisi informasi tentang harga tiket pesawat untuk berbagai maskapai dan rute penerbangan di India. Fitur-fitur dalam dataset ini meliputi informasi seperti maskapai penerbangan, tanggal keberangkatan, bandara keberangkatan dan tujuan, rute penerbangan, waktu keberangkatan dan kedatangan, durasi penerbangan, jumlah perhentian, informasi tambahan tentang penerbangan, serta harga tiket. Dataset ini dapat digunakan untuk memprediksi atau menganalisis faktor-faktor apa yang mempengaruhi harga tiket pesawat di India pada tahun 2019, seperti musim perjalanan, popularitas maskapai, atau waktu keberangkatan.
+The 2019 airfare in India dataset is a collection of data that contains information about airfare prices for various airlines and flight routes in India. The features in this dataset include information such as airlines, departure date, departure and destination airports, flight routes, departure and arrival times, flight duration, number of stops, additional information about the flight, and ticket prices. This dataset can be used to predict or analyze what factors affect airfares in India in 2019, such as travel season, airline popularity, or departure time.
 
-- Airline: maskapai penerbangan yang beroperasi untuk penerbangan tertentu. Maskapai ini dapat mempengaruhi harga tiket berdasarkan reputasi, jenis layanan, dan popularitas.
-- Date_of_Journey: tanggal keberangkatan penerbangan. Harga tiket pesawat dapat bervariasi berdasarkan musim, hari dalam seminggu, atau hari libur.
-- Source: kota atau bandara keberangkatan dari penerbangan. Harga tiket juga bisa dipengaruhi oleh popularitas rute tertentu.
-- Destination: kota atau bandara tujuan dari penerbangan. Seperti source, harga tiket bisa berbeda tergantung pada tujuan akhir.
-- Route: rute penerbangan yang meliputi perhentian atau transfer yang mungkin dilakukan. Jumlah dan jenis perhentian dapat mempengaruhi harga.
-- Dep_Time: waktu keberangkatan pesawat. Harga tiket bisa bervariasi tergantung pada waktu keberangkatan (pagi, siang, malam).
-- Arrival_Time: waktu kedatangan pesawat di tujuan akhir. Durasi perjalanan bisa mempengaruhi harga tiket.
-- Duration: Durasi penerbangan dari keberangkatan hingga kedatangan. Durasi yang lebih pendek atau lebih lama dapat mempengaruhi harga tiket.
-- Total_Stops: Jumlah perhentian selama penerbangan. Harga tiket biasanya lebih mahal untuk penerbangan non-stop dibandingkan dengan yang berhenti di beberapa tempat.
+- Airline: the airline operating for a particular flight. These airlines can influence ticket prices based on reputation, type of service, and popularity.
+- Date_of_Journey: the departure date of the flight. Airfares may vary by season, day of the week, or holiday.
+- Source: the departure city or airport of the flight. Ticket prices can also be affected by the popularity of a particular route.
+- Destination: the destination city or airport of the flight. Like the source, the ticket price may differ depending on the final destination.
+- Route: the route of the flight which includes any stops or transfers that may be made. The number and type of stops can affect the price.
+- Dep_Time: the departure time of the airplane. Ticket prices may vary depending on the departure time (morning, afternoon, evening).
+- Arrival_Time: arrival time of the aircraft at the final destination. The duration of the trip may affect the ticket price.
+- Duration: The duration of the flight from departure to arrival. A shorter or longer duration may affect the ticket price.
+- Total_Stops: The number of stops during the flight. Ticket prices are usually more expensive for non-stop flights compared to those with multiple stops.
 
-- Additional_Info: Informasi tambahan tentang penerbangan seperti layanan khusus, aturan bagasi, atau keterangan lainnya. Ini mungkin mempengaruhi harga tiket.
-- Price: target atau variabel yang ingin diprediksi. Harga tiket pesawat adalah variabel kontinu yang ingin diestimasi berdasarkan fitur-fitur lain dalam dataset.
+- Additional_Info: Additional information about the flight such as special services, baggage rules, or other details. This may affect the ticket price.
+- Price: the target or variable to be predicted. Airfare price is a continuous variable that we want to estimate based on the other features in the dataset.
 
 #### 3. Data Preparation: Feature Engineering 😢
 - Outlier Removal
-- Analisis Unvariate dan Bivariate
+- Unvariate and Bivariate Analysis
 
-#### 4. Modelling 😨 😰
+#### 4. Modeling 😨 😰
 - Decision Tree Regressor
 - Random Forest Regressor
 - XGGradient Boost
